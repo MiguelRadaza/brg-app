@@ -149,6 +149,10 @@ class _HomePageState extends State<HomePage> {
         width: double.maxFinite,
         child: !isFinished
             ? Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: Color.fromARGB(255, 8, 8, 8).withOpacity(0.2),
+                ),
                 child: (Center(
                     child: Container(
                   width: 250,
@@ -158,7 +162,7 @@ class _HomePageState extends State<HomePage> {
                       borderRadius: BorderRadius.circular(24)),
                   child: Container(
                       padding: EdgeInsets.only(left: 40, right: 40),
-                      child: Row(
+                      child: const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
@@ -169,10 +173,6 @@ class _HomePageState extends State<HomePage> {
                         ],
                       )),
                 ))),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: Color.fromARGB(255, 8, 8, 8).withOpacity(0.2),
-                ),
               )
             : Container(
                 width: 50,
@@ -217,12 +217,12 @@ class _HomePageState extends State<HomePage> {
                                 decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(24)),
-                                child: Icon(
+                                child: const Icon(
                                   Icons.share,
                                   size: 15,
                                 )),
                             Container(
-                              child: Row(
+                              child: const Row(
                                 children: [
                                   Icon(Icons.calendar_month),
                                   Text("  May 21, 2023")
@@ -242,8 +242,11 @@ class _HomePageState extends State<HomePage> {
           EdgeInsets.only(left: Dimensions.width25, right: Dimensions.width25),
       height: 160,
       width: double.maxFinite,
+      decoration: BoxDecoration(
+          color: AppColors.robinEggBlue,
+          borderRadius: BorderRadius.circular(15)),
       child: Container(
-          padding: EdgeInsets.all(15),
+          padding: const EdgeInsets.all(15),
           child: Column(
             children: [
               Row(
@@ -256,12 +259,12 @@ class _HomePageState extends State<HomePage> {
                   Container(
                     height: 30,
                     width: 90,
-                    child: Center(
-                      child: Text("Morning"),
-                    ),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(24),
                         color: Colors.white),
+                    child: const Center(
+                      child: Text("Morning"),
+                    ),
                   )
                 ],
               ),
@@ -279,12 +282,12 @@ class _HomePageState extends State<HomePage> {
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(24)),
-                      child: Icon(
+                      child: const Icon(
                         Icons.share,
                         size: 15,
                       )),
                   Container(
-                    child: Row(
+                    child: const Row(
                       children: [
                         Icon(Icons.calendar_month),
                         Text("  May 21, 2023")
@@ -295,9 +298,6 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           )),
-      decoration: BoxDecoration(
-          color: AppColors.robinEggBlue,
-          borderRadius: BorderRadius.circular(15)),
     );
   }
 }

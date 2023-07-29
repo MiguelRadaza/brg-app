@@ -80,7 +80,10 @@ class _AccountPageState extends State<AccountPage> {
                       ],
                     ),
                     const Gap(50),
-                    Container(
+                    Expanded(
+                        child: Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Container(
                         height: Dimensions.height60,
                         width: double.maxFinite,
                         decoration: BoxDecoration(
@@ -93,7 +96,8 @@ class _AccountPageState extends State<AccountPage> {
                             style: TextStyle(
                                 color: AppColors.prussianBlue, fontSize: 15),
                           ),
-                        ))
+                          )),
+                    ))
                   ],
                 )),
           ],

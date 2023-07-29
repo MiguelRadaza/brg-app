@@ -1,3 +1,4 @@
+import 'package:brg/pages/devotionalOnBoarding.dart';
 import 'package:brg/utils/appColor.dart';
 import 'package:brg/utils/dimensions.dart';
 import 'package:brg/widgets/bigText.dart';
@@ -88,7 +89,16 @@ class _VersePageState extends State<VersePage> {
                               text: "John 16:11",
                               size: 19,
                             ),
-                            Container(
+                            InkWell(
+                                onTap: () {
+                                  Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const DevotionalOnBoarding()),
+                                  );
+                                },
+                                child: Container(
                               padding: EdgeInsets.all(10),
                               decoration: BoxDecoration(
                                   color: Colors.greenAccent,
@@ -105,7 +115,7 @@ class _VersePageState extends State<VersePage> {
                                   ],
                                 ),
                               ),
-                            )
+                                ))
                           ],
                         )
                       ],
@@ -133,7 +143,7 @@ class _VersePageState extends State<VersePage> {
                         Container(
                           padding: EdgeInsets.all(10),
                           decoration: BoxDecoration(
-                              color: Colors.greenAccent,
+                              color: Colors.blueAccent,
                               borderRadius: BorderRadius.circular(10)),
                           child: Center(
                             child: Row(
