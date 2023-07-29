@@ -1,13 +1,14 @@
-import 'package:brg/utils/dimensions.dart';
 import 'package:flutter/material.dart';
 
-class BigText extends StatelessWidget {
+import '../utils/dimensions.dart';
+
+class VerseText extends StatelessWidget {
   Color? color;
   final String text;
   double size;
   TextOverflow overflow;
 
-  BigText(
+  VerseText(
       {Key? key,
       this.color = const Color(0xFF332d2b),
       required this.text,
@@ -17,15 +18,13 @@ class BigText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String finalText = "";
     return Text(
       text,
-      // exp.allMatches(text, 20),
-      maxLines: 20,
+      maxLines: 24,
       overflow: overflow,
       style: TextStyle(
           color: color,
-          fontWeight: FontWeight.w700,
+          fontWeight: FontWeight.w300,
           fontFamily: 'Ubuntu',
           fontSize: size == 0 ? Dimensions.height20 : size),
     );

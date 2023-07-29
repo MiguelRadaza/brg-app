@@ -1,11 +1,11 @@
 import 'package:brg/utils/dimensions.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-
 import '../utils/appColor.dart';
 
 class CreateNotePage extends StatefulWidget {
-  const CreateNotePage({Key? key}) : super(key: key);
+  final String titleParam;
+  const CreateNotePage({Key? key, this.titleParam = ""}) : super(key: key);
 
   @override
   _CreateNotePageState createState() => _CreateNotePageState();
@@ -13,15 +13,13 @@ class CreateNotePage extends StatefulWidget {
 
 class _CreateNotePageState extends State<CreateNotePage> {
   bool isMorning = true;
+  
   @override
   Widget build(BuildContext context) {
     List<String> journalTypes = <String>['Morning', 'Evening'];
     String selectedType = journalTypes.first;
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(''),
-      ),
       body: Container(
         padding: EdgeInsets.only(
             left: Dimensions.width30, right: Dimensions.width30),
@@ -33,9 +31,15 @@ class _CreateNotePageState extends State<CreateNotePage> {
             decoration: BoxDecoration(
                 color: AppColors.isabelLine,
                 borderRadius: BorderRadius.circular(15)),
-            child: const TextField(
+              child: widget.titleParam == ""
+                  ? const TextField(
               decoration: InputDecoration(hintText: "Title"),
-            ),
+                    )
+                  : TextField(
+                      controller:
+                          TextEditingController(text: widget.titleParam),
+                      decoration: InputDecoration(hintText: "Title"),
+                    )
           ),
           const Gap(15),
           Row(

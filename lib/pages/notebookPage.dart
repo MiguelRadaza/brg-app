@@ -89,6 +89,12 @@ class _NotebookPageState extends State<NotebookPage> {
                 _notebookListCard(),
                 _notebookListCard(),
                 _notebookListCard(),
+                _notebookListCard(),
+                _notebookListCard(),
+                _notebookListCard(),
+                _notebookListCard(),
+                _notebookListCard(),
+                _notebookListCard(),
               ],
             ))));
   }
