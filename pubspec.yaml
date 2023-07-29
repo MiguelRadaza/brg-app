@@ -41,6 +41,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   percent_indicator: ^4.2.3
   slider_button: ^2.0.0
+  shared_preferences:
+  http:
+  flutter_secure_storage: ^8.0.0
 
 dev_dependencies:
   flutter_test:

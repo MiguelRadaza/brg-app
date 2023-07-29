@@ -1,9 +1,16 @@
+import 'dart:convert';
+
+import 'package:brg/pages/loginPage.dart';
 import 'package:brg/utils/appColor.dart';
 import 'package:brg/utils/dimensions.dart';
 import 'package:brg/widgets/bigText.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../network_utils/api.dart';
 
 class AccountPage extends StatefulWidget {
   const AccountPage({Key? key}) : super(key: key);
@@ -83,25 +90,49 @@ class _AccountPageState extends State<AccountPage> {
                     Expanded(
                         child: Align(
                       alignment: Alignment.bottomCenter,
-                      child: Container(
-                        height: Dimensions.height60,
-                        width: double.maxFinite,
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                                width: 2, color: AppColors.prussianBlue),
-                            borderRadius: BorderRadius.circular(24)),
-                        child: const Center(
-                          child: Text(
-                            "Log Out",
-                            style: TextStyle(
-                                color: AppColors.prussianBlue, fontSize: 15),
-                          ),
-                          )),
+                      child: InkWell(
+                        child: Container(
+                            height: Dimensions.height60,
+                            width: double.maxFinite,
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                    width: 2, color: AppColors.prussianBlue),
+                                borderRadius: BorderRadius.circular(24)),
+                            child: Center(
+                                child: Text(
+                              "Log Out",
+                              style: TextStyle(
+                                  color: AppColors.prussianBlue, fontSize: 15),
+                            ))),
+                        onTap: () {
+                          _logout(context);
+                        },
+                      ),
                     ))
                   ],
                 )),
           ],
         )));
+  }
+
+  void _logout(context) async {
+    var res = await Network().logout({});
+    var body = json.decode(res.body);
+    if (body['status']) {
+      final storage = FlutterSecureStorage();
+      await storage.delete(key: 'token');
+      await storage.delete(key: 'user');
+      // SharedPreferences localStorage = await SharedPreferences.getInstance();
+      // localStorage.remove('user');
+      // localStorage.remove('token');
+      // Navigator.push(
+      // context, MaterialPageRoute(builder: (context) => LoginPage()));
+
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => LoginPage()),
+      );
+    }
   }
 
   Widget _settingsWidget(icon, buttonText) {

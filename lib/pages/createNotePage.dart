@@ -60,7 +60,6 @@ class _CreateNotePageState extends State<CreateNotePage> {
               InkWell(
                 onTap: () {
                   setState(() {
-                    print(isMorning);
                     isMorning = false;
                   });
                 },
