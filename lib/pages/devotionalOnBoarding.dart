@@ -1,3 +1,4 @@
+import 'package:brg/pages/devotionalPage.dart';
 import 'package:brg/utils/appColor.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -38,7 +39,7 @@ class _DevotionalOnBoardingState extends State<DevotionalOnBoarding> {
             ),
             Expanded(
                 child: Align(
-              child: _slider(),
+              child: _slider(context),
               alignment: Alignment.bottomCenter,
             ))
           ],
@@ -73,7 +74,7 @@ class _DevotionalOnBoardingState extends State<DevotionalOnBoarding> {
     );
   }
 
-  Widget _slider() {
+  Widget _slider(context) {
     return Container(
         margin: EdgeInsets.only(left: 20, right: 20, bottom: 30),
         width: double.maxFinite,
@@ -81,6 +82,10 @@ class _DevotionalOnBoardingState extends State<DevotionalOnBoarding> {
           width: 388,
           action: () {
             // Navigator.of(context).pop();
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const DevotionalPage()),
+            );
           },
           label: const Text(
             "Slide to start Devotion",
