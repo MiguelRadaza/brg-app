@@ -42,11 +42,15 @@ class _VersePageState extends State<VersePage> {
                 ))));
   }
 
+  Widget _verseCardV2() {
+    return Container();
+  }
+
   Widget _verseCard() {
     return Container(
       margin: EdgeInsets.only(top: 15, bottom: 15),
       height: 200,
-      width: 400,
+      width: 350,
       decoration: BoxDecoration(
           color: AppColors.ashGrey, borderRadius: BorderRadius.circular(15)),
       child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -99,22 +103,23 @@ class _VersePageState extends State<VersePage> {
                                   );
                                 },
                                 child: Container(
-                              padding: EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                  color: Colors.greenAccent,
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Center(
-                                child: Row(
-                                  children: [
-                                    Icon(Icons.start),
-                                    const Gap(10),
-                                    BigText(
-                                      text: "START",
-                                      size: 15,
-                                    )
-                                  ],
-                                ),
-                              ),
+                                  width: 50,
+                                  padding: EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                      color: Colors.greenAccent,
+                                      borderRadius: BorderRadius.circular(10)),
+                                  child: Center(
+                                    child: Row(
+                                      children: [
+                                        Icon(Icons.start),
+                                        const Gap(10),
+                                        BigText(
+                                          text: "START",
+                                          size: 15,
+                                        )
+                                      ],
+                                    ),
+                                  ),
                                 ))
                           ],
                         )

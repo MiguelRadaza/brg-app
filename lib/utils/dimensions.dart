@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 
 class Dimensions {
+  // screen dimension / factor
+
   // width = 430.0
   // height = 932.0
   static double screenHeight = Get.height;
@@ -14,6 +16,10 @@ class Dimensions {
   static double height50 = screenHeight / 18.64;
   static double height680 = screenHeight / 1.371;
   static double height550 = screenHeight / 1.69;
+
+  // flutter: height: 852.0
+  // flutter: width: 393.0
+  static double height552 = screenHeight / 1.54;
 
   // Width
   static double width10 = screenHeight / 43;

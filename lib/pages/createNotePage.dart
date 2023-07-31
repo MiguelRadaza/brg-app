@@ -13,34 +13,38 @@ class CreateNotePage extends StatefulWidget {
 
 class _CreateNotePageState extends State<CreateNotePage> {
   bool isMorning = true;
-  
+
   @override
   Widget build(BuildContext context) {
     List<String> journalTypes = <String>['Morning', 'Evening'];
     String selectedType = journalTypes.first;
-
+    print(widget.titleParam);
     return Scaffold(
+      appBar: widget.titleParam.isEmpty
+          ? AppBar(
+              title: const Text(''),
+            )
+          : null,
       body: Container(
         padding: EdgeInsets.only(
             left: Dimensions.width30, right: Dimensions.width30),
         child: Column(children: [
           const Gap(15),
           Container(
-            padding: EdgeInsets.only(
-                left: Dimensions.width20, right: Dimensions.width20),
-            decoration: BoxDecoration(
-                color: AppColors.isabelLine,
-                borderRadius: BorderRadius.circular(15)),
+              padding: EdgeInsets.only(
+                  left: Dimensions.width20, right: Dimensions.width20),
+              decoration: BoxDecoration(
+                  color: AppColors.isabelLine,
+                  borderRadius: BorderRadius.circular(15)),
               child: widget.titleParam == ""
                   ? const TextField(
-              decoration: InputDecoration(hintText: "Title"),
+                      decoration: InputDecoration(hintText: "Title"),
                     )
                   : TextField(
                       controller:
                           TextEditingController(text: widget.titleParam),
                       decoration: InputDecoration(hintText: "Title"),
-                    )
-          ),
+                    )),
           const Gap(15),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

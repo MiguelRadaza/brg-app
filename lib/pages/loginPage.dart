@@ -1,11 +1,13 @@
 import 'package:brg/pages/bottomBar.dart';
 import 'package:brg/pages/homePage.dart';
 import 'package:brg/utils/appColor.dart';
+import 'package:brg/utils/dimensions.dart';
 import 'package:brg/widgets/bigText.dart';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../network_utils/api.dart';
@@ -41,6 +43,8 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    print("height: " + Get.height.toString());
+    print("width: " + Get.width.toString());
     return Scaffold(
       key: _scaffoldKey,
       backgroundColor: AppColors.ashGrey,
@@ -63,8 +67,11 @@ class _LoginPageState extends State<LoginPage> {
                 )),
             Container(
                 width: double.maxFinite,
-                height: 634,
-                padding: EdgeInsets.only(top: 30, right: 30, left: 30),
+                height: Dimensions.height552,
+                padding: EdgeInsets.only(
+                    top: Dimensions.height30,
+                    right: Dimensions.width30,
+                    left: Dimensions.width30),
                 decoration: const BoxDecoration(
                     color: AppColors.isabelLine,
                     borderRadius: BorderRadius.only(
@@ -103,7 +110,7 @@ class _LoginPageState extends State<LoginPage> {
                             builder: (context) => InkWell(
                                   child: Container(
                                     width: double.maxFinite,
-                                    height: 50,
+                                    height: Dimensions.height50,
                                     decoration: BoxDecoration(
                                         color: AppColors.ashGrey,
                                         borderRadius:

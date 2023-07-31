@@ -82,12 +82,12 @@ class _DevotionalOnBoardingState extends State<DevotionalOnBoarding> {
           width: 388,
           action: () {
             // Navigator.of(context).pop();
-            // Navigator.pushReplacement(
-            //   context,
-            //   MaterialPageRoute(builder: (context) => const DevotionalPage()),
-            // );
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => DevotionalPage()));
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const DevotionalPage()),
+            );
+            // Navigator.push(context,
+            // MaterialPageRoute(builder: (context) => DevotionalPage()));
           },
           label: const Text(
             "Slide to start Devotion",
