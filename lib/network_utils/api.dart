@@ -7,14 +7,12 @@ class Network {
   final String BaseUrl = "https://admin.biblereadingguide.com/api/";
   final String loginUrl = "auth/login";
   final String logoutUrl = "auth/logout";
+  final String registerUrl = "auth/register";
 
   var token;
   _getToken() async {
     final _storage = FlutterSecureStorage();
-    // SharedPreferences localStorage = await SharedPreferences.getInstance();
     token = await _storage.read(key: 'token');
-    // token = localStorage.getString("token");
-    // token = jsonDecode(token)["token"];
   }
 
   authData(data) async {
@@ -30,12 +28,20 @@ class Network {
         body: jsonEncode(data), headers: _setHeaders());
   }
 
+  register(data) async {
+    var fulUrl = Uri.parse(BaseUrl + registerUrl);
+    print(fulUrl);
+    return await http.post(fulUrl as Uri,
+        body: jsonEncode(data), headers: _setHeaders());
+  }
+
   getData(apiUrl) async {
     var fullUrl = Uri.parse(BaseUrl + apiUrl);
     await _getToken();
     return await http.get(fullUrl as Uri, headers: _setHeaders());
   }
 
+  // SETTING HEADERS
   _setHeaders() => {
         'Content-type': 'application/json',
         'Accept': 'application/json',

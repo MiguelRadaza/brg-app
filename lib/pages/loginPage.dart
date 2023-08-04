@@ -1,5 +1,7 @@
 import 'package:brg/pages/bottomBar.dart';
+import 'package:brg/pages/createNotePage.dart';
 import 'package:brg/pages/homePage.dart';
+import 'package:brg/pages/registerPage.dart';
 import 'package:brg/utils/appColor.dart';
 import 'package:brg/utils/dimensions.dart';
 import 'package:brg/widgets/bigText.dart';
@@ -31,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
     final snackBar = SnackBar(
       content: Text(msg),
       action: SnackBarAction(
-        label: 'Close',
+        label: 'sample',
         onPressed: () {
           // Some code to undo the change!
         },
@@ -129,7 +131,26 @@ class _LoginPageState extends State<LoginPage> {
                                   },
                                 )),
                         const Gap(30),
-                        Text("Allright Reserve Brg App @2023"),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text("Don't have an account yet?"),
+                            const Gap(10),
+                            InkWell(
+                              child: const Text(
+                                "Register",
+                                style: TextStyle(color: Colors.blueAccent),
+                              ),
+                              onTap: () {
+                                Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => RegisterPage()));
+                              },
+                            )
+                          ],
+                        ),
+                        const Text("All right Reserve Brg App @2023"),
                       ],
                     )))
           ],
