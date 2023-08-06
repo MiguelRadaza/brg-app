@@ -262,6 +262,6 @@ class _CreateNotePageState extends State<CreateNotePage> {
     var responseBody = response.body; // Access the body of the Response object
     var body = json.decode(responseBody);
 
-    print(body);
+    Navigator.pop(context, true);
   }
 }

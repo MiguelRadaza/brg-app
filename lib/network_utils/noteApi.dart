@@ -7,6 +7,7 @@ class NotebookNetwork {
   final String BaseUrl = "https://admin.biblereadingguide.com/api/";
   final String createUrl = "notebook/create";
   final String updateUrl = "notebook/update";
+  final String getUrl = "notebook/";
 
   var token;
   _getToken() async {
@@ -23,8 +24,9 @@ class NotebookNetwork {
 
   getNotes() async {
     await _getToken();
-    var fulUrl = Uri.parse(BaseUrl + createUrl);
-    return await http.post(fulUrl as Uri, headers: _setHeaders());
+    print(token);
+    var fulUrl = Uri.parse(BaseUrl + getUrl);
+    return await http.get(fulUrl as Uri, headers: _setHeaders());
   }
 
   updateNote(data) async {
