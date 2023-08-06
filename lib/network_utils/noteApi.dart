@@ -3,11 +3,10 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
-class Network {
+class NotebookNetwork {
   final String BaseUrl = "https://admin.biblereadingguide.com/api/";
-  final String loginUrl = "auth/login";
-  final String logoutUrl = "auth/logout";
-  final String registerUrl = "auth/register";
+  final String createUrl = "notebook/create";
+  final String updateUrl = "notebook/update";
 
   var token;
   _getToken() async {
@@ -15,29 +14,24 @@ class Network {
     token = await _storage.read(key: 'token');
   }
 
-  authData(data) async {
-    var fullUrl = Uri.parse(BaseUrl + loginUrl);
-    return await http.post(fullUrl as Uri,
-        body: jsonEncode(data), headers: _setHeaders());
-  }
-
-  logout(data) async {
-    var fullUrl = Uri.parse(BaseUrl + logoutUrl);
+  createNote(data) async {
     await _getToken();
-    return await http.post(fullUrl as Uri,
-        body: jsonEncode(data), headers: _setHeaders());
-  }
-
-  register(data) async {
-    var fulUrl = Uri.parse(BaseUrl + registerUrl);
+    var fulUrl = Uri.parse(BaseUrl + createUrl);
     return await http.post(fulUrl as Uri,
         body: jsonEncode(data), headers: _setHeaders());
   }
 
-  getData(apiUrl) async {
-    var fullUrl = Uri.parse(BaseUrl + apiUrl);
+  getNotes() async {
     await _getToken();
-    return await http.get(fullUrl as Uri, headers: _setHeaders());
+    var fulUrl = Uri.parse(BaseUrl + createUrl);
+    return await http.post(fulUrl as Uri, headers: _setHeaders());
+  }
+
+  updateNote(data) async {
+    await _getToken();
+    var fulUrl = Uri.parse(BaseUrl + createUrl);
+    return await http.post(fulUrl as Uri,
+        body: jsonEncode(data), headers: _setHeaders());
   }
 
   // SETTING HEADERS

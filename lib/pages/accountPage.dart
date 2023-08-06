@@ -122,12 +122,7 @@ class _AccountPageState extends State<AccountPage> {
       final storage = FlutterSecureStorage();
       await storage.delete(key: 'token');
       await storage.delete(key: 'user');
-      // SharedPreferences localStorage = await SharedPreferences.getInstance();
-      // localStorage.remove('user');
-      // localStorage.remove('token');
-      // Navigator.push(
-      // context, MaterialPageRoute(builder: (context) => LoginPage()));
-
+     
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => LoginPage()),

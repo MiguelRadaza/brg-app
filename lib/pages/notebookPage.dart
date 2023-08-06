@@ -13,6 +13,7 @@ class NotebookPage extends StatefulWidget {
 }
 
 class _NotebookPageState extends State<NotebookPage> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -123,5 +124,9 @@ class _NotebookPageState extends State<NotebookPage> {
         ],
       ),
     );
+  }
+
+  Future<void> _getNotes() async {
+    setState(() {});
   }
 }
