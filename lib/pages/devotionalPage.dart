@@ -25,7 +25,7 @@ class _DevotionalPageState extends State<DevotionalPage> {
             children: [
               Container(
                 padding: EdgeInsets.all(24),
-                height: 450,
+                height: 490,
                 width: double.maxFinite,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,6 +47,7 @@ class _DevotionalPageState extends State<DevotionalPage> {
                   ],
                 ),
               ),
+              const Gap(15),
               Container(
                 height: 900,
                 width: double.maxFinite,

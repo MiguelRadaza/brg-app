@@ -12,13 +12,17 @@ import '../utils/appColor.dart';
 
 class CreateNotePage extends StatefulWidget {
   final String titleParam;
-  const CreateNotePage({Key? key, this.titleParam = ""}) : super(key: key);
+  final String id;
+  const CreateNotePage({Key? key, this.titleParam = "", this.id = ""})
+      : super(key: key);
 
   @override
   _CreateNotePageState createState() => _CreateNotePageState();
 }
 
 class _CreateNotePageState extends State<CreateNotePage> {
+  final TextEditingController titleController = TextEditingController();
+  final TextEditingController contentController = TextEditingController();
   final _storage = FlutterSecureStorage();
   List<String> journalTypes = <String>['Morning', 'Evening'];
   bool isMorning = true;
@@ -35,6 +39,8 @@ class _CreateNotePageState extends State<CreateNotePage> {
   @override
   void initState() {
     super.initState();
+    _fetchNoteById();
+    titleController.text = widget.titleParam;
     selectedType =
         journalTypes.first; // Set the default selected type to 'Morning'
   }
@@ -42,13 +48,9 @@ class _CreateNotePageState extends State<CreateNotePage> {
   final MaterialStateProperty<Color?> trackColor =
       MaterialStateProperty.resolveWith<Color?>(
     (Set<MaterialState> states) {
-      // Track color when the switch is selected.
       if (states.contains(MaterialState.selected)) {
         return Colors.amber;
       }
-      // Otherwise return null to set default track color
-      // for remaining states such as when the switch is
-      // hovered, focused, or disabled.
       return null;
     },
   );
@@ -62,6 +64,27 @@ class _CreateNotePageState extends State<CreateNotePage> {
       return const Icon(Icons.nightlight_outlined);
     },
   );
+
+  Future<void> _fetchNoteById() async {
+    if (widget.id.isNotEmpty) {
+      final response = await NotebookNetwork().getNoteById(widget.id);
+
+      // final responseBody =
+      //     response.body; // Access the body of the Response object
+      final body = json.decode(response.body)['data'];
+      setState(() {
+        titleController.text = body['title'].toString();
+        contentController.text = body['content'].toString();
+        if (body['type'] == journalTypes.first.toLowerCase()) {
+          selectedType = journalTypes.first;
+          light1 = true;
+        } else {
+          selectedType = journalTypes.last;
+          light1 = false;
+        }
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -87,6 +110,7 @@ class _CreateNotePageState extends State<CreateNotePage> {
                       borderRadius: BorderRadius.circular(15)),
                   child: widget.titleParam == ""
                       ? TextFormField(
+                          controller: titleController,
                           keyboardType: TextInputType.text,
                           decoration: InputDecoration(hintText: "Title"),
                           validator: (titleValue) {
@@ -98,8 +122,7 @@ class _CreateNotePageState extends State<CreateNotePage> {
                         )
                       : TextFormField(
                           keyboardType: TextInputType.text,
-                          controller:
-                              TextEditingController(text: widget.titleParam),
+                          controller: titleController,
                           decoration: InputDecoration(hintText: "Title"),
                           validator: (titleValue) {
                             if (titleValue!.isEmpty) {
@@ -147,6 +170,7 @@ class _CreateNotePageState extends State<CreateNotePage> {
                     color: AppColors.isabelLine,
                     borderRadius: BorderRadius.circular(24)),
                 child: TextFormField(
+                  controller: contentController,
                   keyboardType: TextInputType.text,
                   validator: (contentValue) {
                     if (contentValue!.isEmpty) {
@@ -262,6 +286,13 @@ class _CreateNotePageState extends State<CreateNotePage> {
     var responseBody = response.body; // Access the body of the Response object
     var body = json.decode(responseBody);
 
-    Navigator.pop(context, true);
+    if (widget.titleParam.isNotEmpty) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const BottomAppBar()),
+      );
+    } else {
+      Navigator.pop(context, true);
+    }
   }
 }

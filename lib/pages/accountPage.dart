@@ -120,9 +120,10 @@ class _AccountPageState extends State<AccountPage> {
     var body = json.decode(res.body);
     if (body['status']) {
       final storage = FlutterSecureStorage();
+      var token = await storage.read(key: 'token');
       await storage.delete(key: 'token');
       await storage.delete(key: 'user');
-     
+
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => LoginPage()),

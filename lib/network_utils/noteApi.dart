@@ -24,8 +24,13 @@ class NotebookNetwork {
 
   getNotes() async {
     await _getToken();
-    print(token);
     var fulUrl = Uri.parse(BaseUrl + getUrl);
+    return await http.get(fulUrl as Uri, headers: _setHeaders());
+  }
+
+  getNoteById(id) async {
+    await _getToken();
+    var fulUrl = Uri.parse(BaseUrl + getUrl + id);
     return await http.get(fulUrl as Uri, headers: _setHeaders());
   }
 

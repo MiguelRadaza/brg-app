@@ -91,7 +91,10 @@ class _NotebookPageState extends State<NotebookPage> {
             child: Icon(Icons.edit),
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => CreateNotePage()));
+                  MaterialPageRoute(
+                      builder: (context) => CreateNotePage(
+                            id: note.id.toString(),
+                          )));
             },
           )
         ],

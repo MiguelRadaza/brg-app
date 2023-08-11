@@ -2,6 +2,7 @@ import 'package:brg/pages/accountPage.dart';
 import 'package:brg/pages/loginPage.dart';
 import 'package:brg/pages/notebookPage.dart';
 import 'package:brg/pages/versePage.dart';
+import 'package:brg/pages/versesPage.dart';
 import 'package:brg/utils/appColor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -37,7 +38,7 @@ class _BottomBarState extends State<BottomBar> {
 
   static final List<Widget> _widgetOptions = <Widget>[
     const HomePage(),
-    const VersePage(),
+    const VersesPage(),
     const NotebookPage(),
     const AccountPage(),
   ];
