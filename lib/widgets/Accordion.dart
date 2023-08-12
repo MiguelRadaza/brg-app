@@ -1,12 +1,18 @@
 import 'package:brg/utils/appColor.dart';
+import 'package:flutter/foundation.dart';
 import 'package:brg/widgets/bigText.dart';
 import 'package:flutter/material.dart';
+import 'package:sqflite/sqflite.dart';
+
+import '../utils/fetchVerses.dart';
 
 class Accordion extends StatefulWidget {
-  final String title;
-  final String content;
+  final String day;
+  final bool isOpen;
+  final Map verses;
 
-  const Accordion({Key? key, required this.title, required this.content})
+  const Accordion(
+      {Key? key, required this.day, required this.isOpen, required this.verses})
       : super(key: key);
   @override
   State<Accordion> createState() => _AccordionState();
@@ -14,10 +20,44 @@ class Accordion extends StatefulWidget {
 
 class _AccordionState extends State<Accordion> {
   // Show or hide the content
-  bool _showContent = false;
+  late bool _isExpanded;
+  String eveningVerses = "";
+  late String morningBookName = '';
+  late String eveningBookName = '';
+  String morningVerse = '';
+
+  Future<void> fetchBook(verses) async {
+    String mBook = verses['morning_book'];
+    String eBook = verses['evening_book'];
+
+    Database database = await openExistingDatabase();
+    List<Map<String, dynamic>> morningBook =
+        await database.rawQuery("SELECT * FROM books WHERE osis = '$mBook'");
+
+    List<Map<String, dynamic>> eveningBook =
+        await database.rawQuery("SELECT * FROM books WHERE osis = '$eBook'");
+
+    setState(() {
+      morningBookName = morningBook.first['human'];
+      eveningBookName = eveningBook.first['human'];
+      eveningVerses = verses['evening_verse'];
+      morningVerse = verses['morning_verse'];
+      // _data_evening = evening;
+      // _data = morning;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _isExpanded =
+        widget.isOpen; // Initialize _isExpanded from the widget parameter
+    fetchBook(widget.verses);
+  }
 
   @override
   Widget build(BuildContext context) {
+    bool _showContent = widget.isOpen;
     return Card(
       margin: const EdgeInsets.all(10),
       child: Column(children: [
@@ -31,38 +71,20 @@ class _AccordionState extends State<Accordion> {
                 height: 50,
                 width: 50,
                 child: Center(
-                  child: BigText(text: "24"),
+                  child: BigText(text: widget.day),
                 ),
                 decoration: BoxDecoration(
                     color: Colors.amber,
                     borderRadius: BorderRadius.circular(10)),
               ),
-              // Container(
-              //   height: 50,
-              //   width: 100,
-              //   child: Center(
-              //     child: BigText(text: "Start"),
-              //   ),
-              //   decoration: BoxDecoration(
-              //       color: AppColors.ashGrey,
-              //       borderRadius: BorderRadius.circular(10)),
-              // ),
-              // Container(
-              //   height: 50,
-              //   width: 100,
-              //   child: Center(
-              //     child: BigText(text: "View"),
-              //   ),
-              //   decoration: BoxDecoration(
-              //       color: AppColors.lightOrange,
-              //       borderRadius: BorderRadius.circular(10)),
-              // ),
               IconButton(
                 icon: Icon(
-                    _showContent ? Icons.arrow_drop_up : Icons.arrow_drop_down),
+                    _isExpanded ? Icons.arrow_drop_up : Icons.arrow_drop_down),
                 onPressed: () {
                   setState(() {
-                    _showContent = !_showContent;
+                    print(_isExpanded);
+                    _isExpanded = !_isExpanded;
+                    // _showContentNotifier.value = !_showContentNotifier.value;
                   });
                 },
               ),
@@ -70,7 +92,7 @@ class _AccordionState extends State<Accordion> {
           ),
         ),
         // Show or hide the content based on the state
-        _showContent
+        _isExpanded
             ? Container(
                 padding:
                     const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
@@ -88,7 +110,7 @@ class _AccordionState extends State<Accordion> {
                               color: Colors.amber,
                             ),
                             Text(
-                              "Matthew 6:33",
+                              morningBookName + " " + morningVerse.toString(),
                               style: TextStyle(
                                   fontWeight: FontWeight.w400, fontSize: 24),
                             )
@@ -119,7 +141,7 @@ class _AccordionState extends State<Accordion> {
                               color: AppColors.prussianBlue,
                             ),
                             Text(
-                              "Matthew 6:33",
+                              eveningBookName + " " + eveningVerses.toString(),
                               style: TextStyle(
                                   fontWeight: FontWeight.w400, fontSize: 24),
                             )

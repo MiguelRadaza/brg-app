@@ -33,6 +33,8 @@ dependencies:
   get:
   gap:
   google_nav_bar:
+  sqflite: 
+  path_provider:
 
 
 
