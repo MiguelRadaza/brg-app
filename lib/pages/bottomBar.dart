@@ -19,7 +19,7 @@ class _BottomBarState extends State<BottomBar> {
   static final List<Widget> _widgetOptions = <Widget>[
     // const HomePage(),
     const NotebookPage(),
-    const VersePage(),
+    const VersesPage(),
     const AccountPage()
   ];
 
@@ -35,6 +35,7 @@ class _BottomBarState extends State<BottomBar> {
         body: _widgetOptions[_selectedIndex],
         bottomNavigationBar: Container(
             padding: const EdgeInsets.all(5),
+            margin: const EdgeInsets.only(bottom: 24),
             child: GNav(
                 gap: 5,
                 onTabChange: (index) {
@@ -72,19 +73,5 @@ class _BottomBarState extends State<BottomBar> {
                     text: "Account",
                   ),
                 ])));
-    // return Scaffold(
-    //   body: _widgetOptions[_selectedIndex],
-    //   bottomNavigationBar: BottomNavigationBar(
-    //       onTap: (index) => (setState(() {
-    //             _selectedIndex = index;
-    //           })),
-    //       fixedColor: Colors.black,
-    //       items: [
-    //         BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-    //         BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-    //         BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-    //         BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-    //       ]),
-    // );
   }
 }
