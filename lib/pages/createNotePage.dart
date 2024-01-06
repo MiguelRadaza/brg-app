@@ -102,7 +102,7 @@ class _CreateNotePageState extends State<CreateNotePage> {
             decoration: BoxDecoration(
                 color: AppColors.isabelLine,
                 borderRadius: BorderRadius.circular(24)),
-            child: TextField(
+            child: const TextField(
               maxLines: 23,
             ),
           ),
@@ -118,13 +118,13 @@ class _CreateNotePageState extends State<CreateNotePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    child: Text(
+                    margin: const EdgeInsets.only(right: 10),
+                    child: const Text(
                       "😍",
                       style: TextStyle(fontSize: 24),
                     ),
-                    margin: EdgeInsets.only(right: 10),
                   ),
-                  Text("What are you feeling \nright now?")
+                  const Text("What are you feeling \nright now?")
                 ],
               ),
             ),
@@ -138,10 +138,10 @@ class _CreateNotePageState extends State<CreateNotePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    child: Icon(Icons.check),
-                    margin: EdgeInsets.only(right: 10),
+                    margin: const EdgeInsets.only(right: 10),
+                    child: const Icon(Icons.check),
                   ),
-                  Text("Save")
+                  const Text("Save")
                 ],
               ),
             ),
@@ -168,11 +168,11 @@ class _CreateNotePageState extends State<CreateNotePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
+                margin: EdgeInsets.only(right: Dimensions.width10),
                 child: Icon(
                   iconWidget,
                   color: widgetTextColor,
                 ),
-                margin: EdgeInsets.only(right: Dimensions.width10),
               ),
               Text(
                 widgetText,

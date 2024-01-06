@@ -1,7 +1,6 @@
 import 'package:brg/pages/accountPage.dart';
 import 'package:brg/pages/notebookPage.dart';
 import 'package:brg/pages/versePage.dart';
-import 'package:brg/utils/appColor.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
@@ -15,12 +14,12 @@ class BottomBar extends StatefulWidget {
 }
 
 class _BottomBarState extends State<BottomBar> {
-  int _selectedIndex = 0;
-  bool _isBrgNotebookEnabled = true;
+  int _selectedIndex = 1;
+  final bool _isBrgNotebookEnabled = true;
   static final List<Widget> _widgetOptions = <Widget>[
-    const HomePage(),
-    const VersePage(),
+    // const HomePage(),
     const NotebookPage(),
+    const VersePage(),
     const AccountPage()
   ];
 
@@ -35,7 +34,7 @@ class _BottomBarState extends State<BottomBar> {
     return Scaffold(
         body: _widgetOptions[_selectedIndex],
         bottomNavigationBar: Container(
-            padding: EdgeInsets.all(5),
+            padding: const EdgeInsets.all(5),
             child: GNav(
                 gap: 5,
                 onTabChange: (index) {
@@ -48,23 +47,23 @@ class _BottomBarState extends State<BottomBar> {
                 tabBackgroundColor: Colors.grey.shade800,
                 activeColor: Colors.white,
                 tabs: const [
+                  // GButton(
+                  //   textSize: 10,
+                  //   icon: Icons.home,
+                  //   iconSize: 20,
+                  //   text: "Home",
+                  // ),
                   GButton(
                     textSize: 10,
-                    icon: Icons.home,
+                    icon: Icons.description,
                     iconSize: 20,
-                    text: "Home",
+                    text: "Notebook",
                   ),
                   GButton(
                     textSize: 10,
                     icon: Icons.menu_book,
                     iconSize: 20,
                     text: "Verses",
-                  ),
-                  GButton(
-                    textSize: 10,
-                    icon: Icons.description,
-                    iconSize: 20,
-                    text: "Notebook",
                   ),
                   GButton(
                     iconSize: 20,

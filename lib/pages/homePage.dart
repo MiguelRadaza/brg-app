@@ -4,7 +4,6 @@ import 'package:brg/utils/dimensions.dart';
 import 'package:brg/widgets/bigText.dart';
 import 'package:gap/gap.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class HomePage extends StatefulWidget {
@@ -30,7 +29,7 @@ class _HomePageState extends State<HomePage> {
             child: Column(
           children: [
             Container(
-              padding: EdgeInsets.only(left: 15),
+              padding: const EdgeInsets.only(left: 15),
               child: Row(
                 children: [
                   BigText(
@@ -44,14 +43,14 @@ class _HomePageState extends State<HomePage> {
             Container(
               margin: EdgeInsets.only(
                   left: Dimensions.width25, right: Dimensions.width25),
-              padding: EdgeInsets.all(15),
+              padding: const EdgeInsets.all(15),
               decoration: BoxDecoration(
                   color: AppColors.ashGrey,
                   borderRadius: BorderRadius.circular(15)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
+                  SizedBox(
                     width: Dimensions.width270,
                     child: Column(
                       children: [
@@ -81,11 +80,11 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(15)),
-                    child: Icon(
+                    child: const Icon(
                       Icons.book,
                       size: 34,
                     ),
@@ -97,7 +96,7 @@ class _HomePageState extends State<HomePage> {
             Container(
               margin: EdgeInsets.only(
                   left: Dimensions.width25, right: Dimensions.width25),
-              padding: EdgeInsets.all(15),
+              padding: const EdgeInsets.all(15),
               decoration: BoxDecoration(
                   color: AppColors.isabelLine,
                   borderRadius: BorderRadius.circular(15)),
@@ -106,17 +105,17 @@ class _HomePageState extends State<HomePage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
+                      const Text(
                         "Verse of the Day",
                         style: TextStyle(
                             fontSize: 17, fontWeight: FontWeight.bold),
                       ),
                       Container(
-                          padding: EdgeInsets.all(5),
+                          padding: const EdgeInsets.all(5),
                           decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(24)),
-                          child: Icon(
+                          child: const Icon(
                             Icons.share,
                             size: 15,
                           ))
@@ -126,7 +125,7 @@ class _HomePageState extends State<HomePage> {
                   // Verse
                   Text(verse),
                   const Gap(15),
-                  Row(
+                  const Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [Icon(Icons.calendar_month), Text(" 15 Feb")],
                   )
@@ -151,7 +150,7 @@ class _HomePageState extends State<HomePage> {
             ? Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
-                  color: Color.fromARGB(255, 8, 8, 8).withOpacity(0.2),
+                  color: const Color.fromARGB(255, 8, 8, 8).withOpacity(0.2),
                 ),
                 child: (Center(
                     child: Container(
@@ -161,7 +160,7 @@ class _HomePageState extends State<HomePage> {
                       color: AppColors.lightOrange,
                       borderRadius: BorderRadius.circular(24)),
                   child: Container(
-                      padding: EdgeInsets.only(left: 40, right: 40),
+                      padding: const EdgeInsets.only(left: 40, right: 40),
                       child: const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -181,7 +180,7 @@ class _HomePageState extends State<HomePage> {
                     color: AppColors.lightOrange,
                     borderRadius: BorderRadius.circular(15)),
                 child: Container(
-                    padding: EdgeInsets.all(15),
+                    padding: const EdgeInsets.all(15),
                     child: Column(
                       children: [
                         Row(
@@ -194,18 +193,18 @@ class _HomePageState extends State<HomePage> {
                             Container(
                               height: 30,
                               width: 90,
-                              child: Center(
-                                child: Text("Morning"),
-                              ),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(24),
                                   color: Colors.white),
+                              child: const Center(
+                                child: Text("Morning"),
+                              ),
                             )
                           ],
                         ),
                         const Gap(5),
                         Container(
-                          child: Text(
+                          child: const Text(
                               "Lorem ipsum dolor sit amet, consectetur adipisicing elit. In error unde aliquid, asperiores quos minima nihil est sit vero."),
                         ),
                         const Gap(5),
@@ -213,7 +212,7 @@ class _HomePageState extends State<HomePage> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Container(
-                                padding: EdgeInsets.all(5),
+                                padding: const EdgeInsets.all(5),
                                 decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(24)),
@@ -270,7 +269,7 @@ class _HomePageState extends State<HomePage> {
               ),
               const Gap(5),
               Container(
-                child: Text(
+                child: const Text(
                     "Lorem ipsum dolor sit amet, consectetur adipisicing elit. In error unde aliquid, asperiores quos minima nihil est sit vero."),
               ),
               const Gap(5),
@@ -278,7 +277,7 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                      padding: EdgeInsets.all(5),
+                      padding: const EdgeInsets.all(5),
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(24)),

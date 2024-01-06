@@ -44,7 +44,7 @@ class _VersePageState extends State<VersePage> {
 
   Widget _verseCard() {
     return Container(
-      margin: EdgeInsets.only(top: 15, bottom: 15),
+      margin: const EdgeInsets.only(top: 15, bottom: 15),
       height: 200,
       width: 400,
       decoration: BoxDecoration(
@@ -64,12 +64,12 @@ class _VersePageState extends State<VersePage> {
           ),
         ),
         Container(
-            padding: EdgeInsets.only(top: 15, left: 15),
+            padding: const EdgeInsets.only(top: 15, left: 15),
             width: 280,
             child: Column(
               children: [
                 // Morning
-                Container(
+                SizedBox(
                     height: 90,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -99,14 +99,14 @@ class _VersePageState extends State<VersePage> {
                                   );
                                 },
                                 child: Container(
-                              padding: EdgeInsets.all(10),
+                              padding: const EdgeInsets.all(10),
                               decoration: BoxDecoration(
                                   color: Colors.greenAccent,
                                   borderRadius: BorderRadius.circular(10)),
                               child: Center(
                                 child: Row(
                                   children: [
-                                    Icon(Icons.start),
+                                    const Icon(Icons.start),
                                     const Gap(10),
                                     BigText(
                                       text: "START",
@@ -141,14 +141,14 @@ class _VersePageState extends State<VersePage> {
                           size: 19,
                         ),
                         Container(
-                          padding: EdgeInsets.all(10),
+                          padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
                               color: Colors.blueAccent,
                               borderRadius: BorderRadius.circular(10)),
                           child: Center(
                             child: Row(
                               children: [
-                                Icon(Icons.view_agenda),
+                                const Icon(Icons.view_agenda),
                                 const Gap(10),
                                 BigText(
                                   text: "VIEW",

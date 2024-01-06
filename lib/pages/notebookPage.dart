@@ -17,7 +17,7 @@ class _NotebookPageState extends State<NotebookPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
-            padding: EdgeInsets.only(left: 25, right: 25),
+            padding: const EdgeInsets.only(left: 25, right: 25),
             child: SingleChildScrollView(
                 child: Column(
               children: [
@@ -36,7 +36,7 @@ class _NotebookPageState extends State<NotebookPage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => CreateNotePage()));
+                              builder: (context) => const CreateNotePage()));
                     },
                     child: Container(
                         height: Dimensions.height50,
@@ -44,7 +44,7 @@ class _NotebookPageState extends State<NotebookPage> {
                         decoration: BoxDecoration(
                             color: AppColors.prussianBlue,
                             borderRadius: BorderRadius.circular(15)),
-                        child: Center(
+                        child: const Center(
                           child: Text(
                             "Create Note",
                             style: TextStyle(color: Colors.white, fontSize: 18),
@@ -52,8 +52,8 @@ class _NotebookPageState extends State<NotebookPage> {
                         ))), // Add notebook button
                 const Gap(15),
                 Container(
-                    padding: EdgeInsets.only(bottom: 15),
-                    decoration: BoxDecoration(
+                    padding: const EdgeInsets.only(bottom: 15),
+                    decoration: const BoxDecoration(
                         border: Border(
                       bottom: BorderSide(
                         color: Colors.black12,
@@ -64,19 +64,19 @@ class _NotebookPageState extends State<NotebookPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
-                          padding: EdgeInsets.all(17),
+                          padding: const EdgeInsets.all(17),
                           width: Dimensions.width250,
                           decoration: BoxDecoration(
                               color: AppColors.ashGrey,
                               borderRadius: BorderRadius.circular(15)),
-                          child: Text("Search: Date / Type "),
+                          child: const Text("Search: Date / Type "),
                         ),
                         Container(
-                          padding: EdgeInsets.all(17),
+                          padding: const EdgeInsets.all(17),
                           decoration: BoxDecoration(
                               color: AppColors.robinEggBlue,
                               borderRadius: BorderRadius.circular(15)),
-                          child: Icon(
+                          child: const Icon(
                             Icons.search,
                             color: Colors.white,
                           ),
@@ -95,23 +95,23 @@ class _NotebookPageState extends State<NotebookPage> {
 
   Widget _notebookListCard() {
     return Container(
-      margin: EdgeInsets.only(top: 15),
-      padding: EdgeInsets.all(15),
+      margin: const EdgeInsets.only(top: 15),
+      padding: const EdgeInsets.all(15),
       decoration: BoxDecoration(
           color: AppColors.isabelLine, borderRadius: BorderRadius.circular(15)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Row(
+          const Row(
             children: [Icon(Icons.book), Text("  Title")],
           ),
-          Text("Morning"),
-          Text("2023-05-20"),
+          const Text("Morning"),
+          const Text("2023-05-20"),
           InkWell(
-            child: Icon(Icons.edit),
+            child: const Icon(Icons.edit),
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => CreateNotePage()));
+                  MaterialPageRoute(builder: (context) => const CreateNotePage()));
             },
           )
         ],

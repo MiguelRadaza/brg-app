@@ -15,7 +15,7 @@ class _DevotionalOnBoardingState extends State<DevotionalOnBoarding> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.ashGrey,
-      body: Container(
+      body: SizedBox(
         height: double.infinity,
         child: Column(
           children: [
@@ -23,7 +23,7 @@ class _DevotionalOnBoardingState extends State<DevotionalOnBoarding> {
             Container(
               width: 380,
               height: 550,
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
                   color: Colors.white, borderRadius: BorderRadius.circular(15)),
               child: Column(
@@ -38,8 +38,8 @@ class _DevotionalOnBoardingState extends State<DevotionalOnBoarding> {
             ),
             Expanded(
                 child: Align(
-              child: _slider(),
               alignment: Alignment.bottomCenter,
+              child: _slider(),
             ))
           ],
         ),
@@ -51,7 +51,7 @@ class _DevotionalOnBoardingState extends State<DevotionalOnBoarding> {
     return Container(
       child: Row(
         children: [
-          Container(
+          SizedBox(
             height: 50,
             child: Checkbox(
               checkColor: Colors.white,
@@ -66,7 +66,7 @@ class _DevotionalOnBoardingState extends State<DevotionalOnBoarding> {
           ),
           Text(
             textValue,
-            style: TextStyle(fontSize: 17),
+            style: const TextStyle(fontSize: 17),
           )
         ],
       ),
@@ -75,7 +75,7 @@ class _DevotionalOnBoardingState extends State<DevotionalOnBoarding> {
 
   Widget _slider() {
     return Container(
-        margin: EdgeInsets.only(left: 20, right: 20, bottom: 30),
+        margin: const EdgeInsets.only(left: 20, right: 20, bottom: 30),
         width: double.maxFinite,
         child: SliderButton(
           width: 388,

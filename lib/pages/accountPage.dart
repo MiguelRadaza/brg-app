@@ -3,7 +3,6 @@ import 'package:brg/utils/dimensions.dart';
 import 'package:brg/widgets/bigText.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 
 class AccountPage extends StatefulWidget {
   const AccountPage({Key? key}) : super(key: key);
